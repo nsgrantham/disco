@@ -119,8 +119,7 @@ library(ggplot2)
 library(dplyr)
 library(gapminder)
 
-ggplot(filter(gapminder, year == 2007), 
-       aes(gdpPercap, lifeExp, size = pop, color = continent)) +
+ggplot(filter(gapminder, year == 2007), aes(gdpPercap, lifeExp, size = pop, color = continent)) +
   geom_point() +
   scale_color_disco(palette = "vibrant")
 ```

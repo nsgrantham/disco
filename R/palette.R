@@ -162,13 +162,14 @@ rainbow_index <- function(n) {
 disco_palette_show <- function(palettes = disco_palette_names(), n = NULL,
                                alpha = NULL, direction = 1) {
   dims <- n2mfrow(length(palettes))
-  oldpar <- par(mfrow = dims, mai = par('mai')/2)
+  oldpar <- par(mfrow = dims, mai = par('mai')/3)
   on.exit(par(oldpar))
 
   for (palette in palettes) {
     pal <- disco(palette, n, alpha, direction)
     x <- 1:length(pal)
-    image(x, 1, matrix(x),
-          col = pal, main = palette, axes = FALSE)
+    image(x, 1, as.matrix(x),
+          col = pal, main = palette, axes = FALSE,
+          ylab = "", xaxt = "n", yaxt = "n", bty = "n")
   }
 }
