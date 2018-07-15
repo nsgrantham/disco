@@ -1,11 +1,26 @@
 Package: disco
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Discrete Color Palettes for Qualitative, Sequential, and Diverging Data
+Version: 1.0.0
+Date: 2018-07-14
+Authors@R: c(
+    person("Neal", "Grantham", email = "neal@nsgrantham.com", role = c("aut", "cre")),
+    person("Paul", "Tol", role = c("aut")))
+Maintainer: Neal Grantham <neal@nsgrantham.com>
+Description: Nine discrete color palettes for qualitative, diverging, and sequential 
+             data developed by Paul Tol <https://personal.sron.nl/~pault/>. Colors 
+             within each palette are designed to match well together and be readable 
+             by all audiences, including color-blind readers. Use disco() to 
+             retrieve a palette's colors in hex codes or use scale_colour_disco() 
+             and scale_fill_disco() with ggplot2.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 2.10)
+Imports:
+    grDevices
+Suggests:
+    ggplot2
+URL: https://github.com/nsgrantham/disco
+BugReports: https://github.com/nsgrantham/disco/issues
+RoxygenNote: 6.0.1.9000

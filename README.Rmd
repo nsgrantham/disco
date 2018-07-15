@@ -1,0 +1,80 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+```
+
+# disco
+
+This package provides 9 discrete color palettes developed by Paul Tol at <https://personal.sron.nl/~pault/> for qualitative, diverging, and sequential data. Colors within each palette are designed to match well together and be readable by all audiences, including color-blind readers.
+
+## Installation
+
+`disco` can be installed directly from GitHub:
+
+```{r install, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("nsgrantham/disco")
+```
+
+## Palettes
+
+The `disco` API is similar to other color palette packages like [`viridis`](https://github.com/sjmgarnier/viridis) and [`scico`](https://github.com/thomasp85/scico).
+
+View all 9 color palettes with `disco_palettes_show()` 
+
+```{r show}
+library(disco)
+
+disco_palette_show()
+```
+
+The following table summarizes the 9 color palettes. For more information, consult Paul Tol's Notes <https://personal.sron.nl/~pault/>.
+
+| Palette | n | Data type | Description |
+|--------------|------------------|-----------|-------------|
+|bright|7|Qualitative|Good for lines and their labels.|
+|vibrant|7|Qualitative|Built around the signature orange #FF7043 of the data visualization framework TensorBoard.|
+|muted|10|Qualitative|Good for lines and maps.|
+|light|9|Qualitative|Good for filled cells and backgrounds because it keeps black text readable.|
+|sunset|11|Diverging|This is related to the ColorBrewer RdYlBu scheme, but with darker central colours and made more symmetric.|
+|daybreak|9|Diverging|This is the reversed ColorBrewer RdBu scheme.|
+|midnight|9|Diverging|This is the ColorBrewer PRGn scheme, with green #A6DBA0 shifted to #ACD39E to make it print-friendly.|
+|eclipse|9|Sequential|This is the ColorBrewer YlOrBr scheme, with orange #FE9929 shifted to #FB9A29 to make it print-friendly.|
+|rainbow|23|Sequential|This should not be used on a continuous scale, but on a discrete scale it offers up to 23 colors and remains relatively color-blind safe.|
+
+Select a palette by name:
+
+```{r hex}
+disco(palette = "sunset")
+```
+
+Scales are provided for `ggplot2`:
+
+```{r ggplot2, warn=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+
+ggplot(filter(gapminder, year == 2007), 
+       aes(gdpPercap, lifeExp, size = pop, color = continent)) +
+  geom_point() +
+  scale_color_disco(palette = "vibrant")
+```
+
+Happy plotting!
+
+## References
+
+<https://www.colorbrewer2.org> by Cynthia A. Brewer, Geography, Pennsylvania State University  
+<https://personal.sron.nl/~pault/> by Paul Tol, Netherlands Institute for Space Research (SRON) 
